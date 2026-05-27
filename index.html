@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>DIAVAL · URE Caieiras | Acesso Rápido</title>
+    <meta name="description" content="Portal de acesso rápido aos painéis e arquivos de avaliação da URE Caieiras - SEDUC SP.">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* ===== IDENTIDADE VISUAL URE CAIEIRAS ===== */
+        :root {
+            --azul-ure: #0a2f6c;
+            --azul-escuro: #041a3a;
+            --vermelho-ure: #d32f2f;
+            --dourado: #ffec9e;
+            --cinza-fundo: #0f1a24e0;
+            --card-bg: #1e2a36;
+            --card-verde: #1a2e28;
+            --card-amarelo: #2e2a1f;
+            --card-vermelho: #2a1f24;
+            --texto-claro: #eef3fb;
+            --borda-dourada: #f4c542;
+            --gradiente-fundo: linear-gradient(145deg, #0a2f6c 0%, #041a3a 100%);
+            --radius: 32px;
+            --radius-md: 24px;
+            --radius-sm: 16px;
+            --shadow: 0 8px 16px rgba(0,0,0,0.3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--gradiente-fundo);
+            min-height: 100vh;
+            padding: 20px;
+            color: var(--texto-claro);
+        }
+
+        .main-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: var(--cinza-fundo);
+            border-radius: var(--radius);
+            padding: 24px;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--vermelho-ure);
+            backdrop-filter: blur(2px);
+        }
+
+        /* Cabeçalho */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(10, 47, 108, 0.8);
+            backdrop-filter: blur(4px);
+            padding: 12px 24px;
+            border-radius: 60px;
+            margin-bottom: 28px;
+            flex-wrap: wrap;
+            gap: 12px;
+            border: 1px solid var(--vermelho-ure);
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-icon {
+            font-size: 2rem;
+            color: var(--dourado);
+        }
+
+        .logo-text {
+            font-weight: 800;
+            font-size: 1.5rem;
+            background: linear-gradient(135deg, var(--dourado), #f7b731);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .ure-badge {
+            background: var(--vermelho-ure);
+            color: white;
+            padding: 6px 18px;
+            border-radius: 3rem;
+            font-weight: bold;
+            font-size: 0.8rem;
+            box-shadow: 0 0 6px var(--dourado);
+        }
+
+        /* Banner */
+        .banner-destaque {
+            background: linear-gradient(135deg, var(--azul-ure), var(--azul-escuro));
+            border-left: 6px solid var(--dourado);
+            border-radius: var(--radius-sm);
+            padding: 20px 24px;
+            margin-bottom: 32px;
+            display: flex;
+            gap: 16px;
+            align-items: flex-start;
+            box-shadow: var(--shadow);
+        }
+
+        .banner-icon {
+            font-size: 2.2rem;
+            color: var(--dourado);
+        }
+
+        .banner-texto p {
+            font-size: 0.95rem;
+            margin-bottom: 6px;
+            line-height: 1.4;
+        }
+
+        .banner-texto strong {
+            color: var(--dourado);
+        }
+
+        /* Seções estilo cards URE */
+        .section-card {
+            background: rgba(20, 35, 50, 0.7);
+            border-radius: var(--radius-md);
+            padding: 20px 24px;
+            margin-bottom: 28px;
+            border: 1px solid rgba(211, 47, 47, 0.3);
+            transition: all 0.2s;
+        }
+
+        .section-title {
+            font-size: 1.25rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            border-left: 5px solid var(--dourado);
+            padding-left: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section-title i {
+            color: var(--dourado);
+        }
+
+        /* Grade de links */
+        .links-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .link-card {
+            background: var(--card-bg);
+            border-radius: 28px;
+            padding: 18px;
+            text-decoration: none;
+            color: var(--texto-claro);
+            transition: all 0.2s ease;
+            border-left: 5px solid var(--vermelho-ure);
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+
+        .link-card:hover {
+            transform: translateY(-3px);
+            border-left-color: var(--dourado);
+            background: #2a3a48;
+            box-shadow: 0 12px 20px rgba(0,0,0,0.3);
+        }
+
+        .link-icon {
+            font-size: 2rem;
+            min-width: 48px;
+            text-align: center;
+            color: var(--dourado);
+        }
+
+        .link-info h3 {
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        .link-info p {
+            font-size: 0.7rem;
+            opacity: 0.8;
+        }
+
+        /* Calendário */
+        .cal-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .cal-item {
+            background: var(--card-bg);
+            border-radius: 40px;
+            padding: 8px 16px;
+            font-size: 0.75rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            border-left: 3px solid;
+        }
+
+        .cal-data {
+            font-weight: 700;
+            color: var(--dourado);
+        }
+
+        .cal-nome {
+            font-weight: 500;
+        }
+
+        .cal-tag {
+            background: rgba(0,0,0,0.4);
+            padding: 2px 8px;
+            border-radius: 30px;
+            font-size: 0.65rem;
+        }
+
+        .cal-past {
+            opacity: 0.6;
+            filter: grayscale(0.2);
+        }
+
+        /* Cores das bordas */
+        .borda-pp { border-left-color: var(--vermelho-ure); }
+        .borda-saresp { border-left-color: #9b59b6; }
+        .borda-omasp { border-left-color: #2ecc71; }
+        .borda-olisp { border-left-color: #1abc9c; }
+        .borda-fluencia { border-left-color: #3498db; }
+        .borda-diagnostica { border-left-color: #2980b9; }
+        .borda-provao { border-left-color: var(--dourado); }
+        .borda-recuperacao { border-left-color: #e67e22; }
+
+        /* Rodapé */
+        footer {
+            text-align: center;
+            margin-top: 30px;
+            font-size: 0.7rem;
+            color: #b4c8e0;
+            border-top: 1px solid rgba(211,47,47,0.3);
+            padding-top: 20px;
+        }
+
+        /* Responsivo */
+        @media (max-width: 700px) {
+            .main-container {
+                padding: 16px;
+            }
+            .header {
+                flex-direction: column;
+                text-align: center;
+            }
+            .links-grid {
+                grid-template-columns: 1fr;
+            }
+            .banner-destaque {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="main-container">
+    <!-- Cabeçalho URE Caieiras -->
+    <div class="header">
+        <div class="logo-area">
+            <i class="fas fa-chalkboard-user logo-icon"></i>
+            <span class="logo-text">DIAVAL</span>
+            <span style="font-size:0.8rem;">URE Caieiras</span>
+        </div>
+        <div class="ure-badge">
+            <i class="fas fa-school"></i> Acesso rápido · SEDUC SP
+        </div>
+    </div>
+
+    <!-- Banner institucional -->
+    <div class="banner-destaque">
+        <div class="banner-icon"><i class="fas fa-chart-line"></i></div>
+        <div class="banner-texto">
+            <p><strong>💡 Acesse os resultados da Prova Paulista no BI — Escola Total!</strong> Defina as suas prioridades e o seu plano de ação.</p>
+            <p>Lembre-se: aprendizagens não consolidadas impactam os resultados do SARESP no final do ano.</p>
+        </div>
+    </div>
+
+    <!-- AVALIAÇÕES PASSADAS -->
+    <div class="section-card">
+        <div class="section-title">
+            <i class="fas fa-calendar-alt"></i> Avaliações Passadas
+        </div>
+        <div class="cal-grid">
+            <div class="cal-item borda-omasp cal-past">
+                <span class="cal-data">18–22/mai</span>
+                <span class="cal-nome">OMASP</span>
+            </div>
+            <div class="cal-item borda-pp cal-past">
+                <span class="cal-data">13–17/abr</span>
+                <span class="cal-nome">Prova Paulista</span>
+                <span class="cal-tag">B1</span>
+            </div>
+            <div class="cal-item borda-fluencia cal-past">
+                <span class="cal-data">9–26/mar</span>
+                <span class="cal-nome">Fluência Leitora</span>
+            </div>
+            <div class="cal-item borda-diagnostica cal-past">
+                <span class="cal-data">2–6/fev</span>
+                <span class="cal-nome">Diagnóstica</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- PRÓXIMAS AVALIAÇÕES -->
+    <div class="section-card">
+        <div class="section-title">
+            <i class="fas fa-hourglass-half"></i> Próximas Avaliações
+        </div>
+        <div class="cal-grid">
+            <div class="cal-item borda-pp">
+                <span class="cal-data">15–19/jun</span>
+                <span class="cal-nome">Prova Paulista</span>
+                <span class="cal-tag">B2</span>
+            </div>
+            <div class="cal-item borda-saresp">
+                <span class="cal-data">22–26/jun</span>
+                <span class="cal-nome">SARESP</span>
+                <span class="cal-tag">3EM</span>
+            </div>
+            <div class="cal-item borda-diagnostica">
+                <span class="cal-data">10/ago</span>
+                <span class="cal-nome">Diagnóstica</span>
+            </div>
+            <div class="cal-item borda-olisp">
+                <span class="cal-data">24–28/ago</span>
+                <span class="cal-nome">OLISP</span>
+            </div>
+            <div class="cal-item borda-pp">
+                <span class="cal-data">21–25/set</span>
+                <span class="cal-nome">Prova Paulista</span>
+                <span class="cal-tag">B3</span>
+            </div>
+            <div class="cal-item borda-saresp">
+                <span class="cal-data">3/nov–4/dez</span>
+                <span class="cal-nome">SARESP</span>
+                <span class="cal-tag">2EF,5EF-9EF</span>
+            </div>
+            <div class="cal-item borda-provao">
+                <span class="cal-data">3/nov–4/dez</span>
+                <span class="cal-nome">Provão Paulista</span>
+            </div>
+            <div class="cal-item borda-recuperacao">
+                <span class="cal-data">7–11/dez</span>
+                <span class="cal-nome">Recuperação</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- DRIVE DIAVAL - Pastas 2026 -->
+    <div class="section-card">
+        <div class="section-title">
+            <i class="fab fa-google-drive"></i> Drive DIAVAL — Avaliações 2026
+        </div>
+        <div class="links-grid">
+            <a href="https://drive.google.com/drive/folders/1TfRUAeRtGBDas0oyCHy5D204ZkYNurX2" target="_blank" class="link-card">
+                <div class="link-icon"><i class="fas fa-file-alt"></i></div>
+                <div class="link-info"><h3>1. Prova Paulista</h3><p>Arquivos, simulados e gabaritos</p></div>
+            </a>
+            <a href="https://drive.google.com/drive/folders/1GwIV7KmM1mSM3dfF9bhshN68VFvuahya" target="_blank" class="link-card">
+                <div class="link-icon"><i class="fas fa-pen-fancy"></i></div>
+                <div class="link-info"><h3>2. Tarefa SP</h3><p>Materiais e orientações</p></div>
+            </a>
+            <a href="https://drive.google.com/drive/folders/1bFiPyn7eiJjcM_o0vZatbaVt5SuwEUi2" target="_blank" class="link-card">
+                <div class="link-icon"><i class="fas fa-trophy"></i></div>
+                <div class="link-info"><h3>3. Copa da Escola</h3><p>Rankings e dados</p></div>
+            </a>
+            <a href="https://drive.google.com/drive/folders/1HJvnlI_WaHRwqyAvGiJJXr1euOaPMB0n" target="_blank" class="link-card">
+                <div class="link-icon"><i class="fas fa-chart-bar"></i></div>
+                <div class="link-info"><h3>4. SARESP</h3><p>Matrizes e resultados</p></div>
+            </a>
+            <a href="https://drive.google.com/drive/folders/1oUlZ37Ho5FXc8OT-EnhSyry2OvaXpiJD" target="_blank" class="link-card">
+                <div class="link-icon"><i class="fas fa-graduation-cap"></i></div>
+                <div class="link-info"><h3>5. Provão Paulista</h3><p>Bancos de questões</p></div>
+            </a>
+            <a href="https://drive.google.com/drive/folders/1JVk_XBgeLw5v6oUltSRQhByTNF5uRL1Q" target="_blank" class="link-card">
+                <div class="link-icon"><i class="fas fa-flask"></i></div>
+                <div class="link-info"><h3>6. SAEB</h3><p>Indicadores externos</p></div>
+            </a>
+        </div>
+    </div>
+
+    <!-- Dashboards DIAVAL e Sistemas SEDUC lado a lado -->
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 28px; margin-bottom: 28px;">
+        <!-- Dashboards DIAVAL -->
+        <div class="section-card" style="margin-bottom: 0;">
+            <div class="section-title">
+                <i class="fas fa-chart-simple"></i> Dashboards DIAVAL
+            </div>
+            <div class="links-grid" style="grid-template-columns: 1fr;">
+                <a href="https://copadaescola.vercel.app" target="_blank" class="link-card">
+                    <div class="link-icon"><i class="fas fa-trophy"></i></div>
+                    <div class="link-info"><h3>Copa da Escola</h3><p>Rankings e evolução das turmas</p></div>
+                </a>
+                <a href="https://ppb1.vercel.app" target="_blank" class="link-card">
+                    <div class="link-icon"><i class="fas fa-id-card"></i></div>
+                    <div class="link-info"><h3>PP B1 — Cartões</h3><p>Leitura de desempenho por aluno</p></div>
+                </a>
+            </div>
+        </div>
+
+        <!-- Sistemas Oficiais SEDUC -->
+        <div class="section-card" style="margin-bottom: 0;">
+            <div class="section-title">
+                <i class="fas fa-building"></i> SEDUC — Sistemas oficiais
+            </div>
+            <div class="links-grid" style="grid-template-columns: 1fr;">
+                <a href="https://escolatotal.educacao.sp.gov.br/Inicio" target="_blank" class="link-card">
+                    <div class="link-icon"><i class="fas fa-school"></i></div>
+                    <div class="link-info"><h3>Escola Total</h3><p>BI e indicadores da unidade escolar</p></div>
+                </a>
+                <a href="https://repositorio.educacao.sp.gov.br/" target="_blank" class="link-card">
+                    <div class="link-icon"><i class="fas fa-folder-open"></i></div>
+                    <div class="link-info"><h3>Repositório SEDUC</h3><p>Materiais, planos e documentos</p></div>
+                </a>
+                <a href="https://atendimento.educacao.sp.gov.br/" target="_blank" class="link-card">
+                    <div class="link-icon"><i class="fas fa-headset"></i></div>
+                    <div class="link-info"><h3>Atendimento</h3><p>Central de chamados e suporte</p></div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <i class="fas fa-chalkboard"></i> URE Caieiras · Diretoria de Ensino · Acompanhamento Pedagógico 2026<br>
+        Links oficiais e pastas do Drive atualizadas permanentemente.
+    </footer>
+</div>
+</body>
+</html>
